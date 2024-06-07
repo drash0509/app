@@ -1,4 +1,5 @@
-// src/components/LoginForm.js
+
+// LoginForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +21,8 @@ const LoginForm = () => {
 
     if (user) {
       alert("Login successful!");
-      navigate('/account', { state: { user } });
+      localStorage.setItem('loggedInUser', JSON.stringify(user)); // Store logged-in user
+      navigate('/account');
     } else {
       alert("Invalid username or password!");
     }

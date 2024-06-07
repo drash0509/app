@@ -1,4 +1,4 @@
-// src/components/Register.js
+// Register.js
 import React, { useState } from 'react';
 
 const Register = () => {
@@ -109,6 +109,7 @@ const Register = () => {
           <label className="block mb-1 font-bold text-gray-700" htmlFor="occupation">Occupation</label>
           <input type="text" id="occupation" name="occupation" value={formData.occupation} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
         </div>
+    
         <button type="button" onClick={handleRegister} className="w-full bg-blue-500 text-white py-2 rounded-md">Register</button>
       </form>
     </div>

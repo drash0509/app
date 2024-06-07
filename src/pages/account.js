@@ -1,10 +1,15 @@
 // Account.js
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
 const Account = () => {
-  const location = useLocation();
-  const user = location.state ? location.state.user : null;
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (loggedInUser) {
+      setUser(loggedInUser);
+    }
+  }, []);
 
   if (!user) {
     return <div>No user data found!</div>;
@@ -13,7 +18,7 @@ const Account = () => {
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Account Details</h2>
-      <div>
+
         <p><strong>Name:</strong> {user.name}</p>
         <p><strong>Username:</strong> {user.username}</p>
         <p><strong>Email:</strong> {user.email}</p>
@@ -21,7 +26,7 @@ const Account = () => {
         <p><strong>Hobbies:</strong> {user.hobbies.join(', ')}</p>
         <p><strong>Occupation:</strong> {user.occupation}</p>
       </div>
-    </div>
+  
   );
 };
 
